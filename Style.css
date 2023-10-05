@@ -346,10 +346,10 @@ img,video{
 }
 .border-custom-accent{
     --tw-border-opacity: 1;
-    border-color: #aa00ff;
+    border-color: #C03890;
 }
 .border-custom-accent\/10{
-    border-color: #aa00ff;
+    border-color: #C03890;
 }
 .border-custom-text2\/10{
     border-color:#c8c8c81a
@@ -433,7 +433,7 @@ img,video{
     letter-spacing:.05em
 }
 .text-custom-accent{
-    color: #aa00ff;
+    color: #C03890;
 }
 .text-custom-text2{
     --tw-text-opacity: 1;
@@ -502,10 +502,10 @@ body{
     }
 }
 .hover\:border-custom-accent-hover:hover{
-    color: #aa00ff;
+    color: #C03890;
 }
 .hover\:border-custom-text2\/20:hover{
-    border-color: #aa00ff;
+    border-color: #C03890;
 }
 .hover\:border-custom-text2\/50:hover{
     border-color: #9924ff4d;
@@ -514,7 +514,7 @@ body{
     background-color: #9924ff4d;
 }
 .group:hover .group-hover\:text-custom-accent{
-    color: #aa00ff;
+    color: #C03890;
 }
 @media (min-width: 768px){
     .md\:grid-cols-3{
