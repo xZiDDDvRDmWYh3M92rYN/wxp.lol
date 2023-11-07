@@ -1,1 +1,4 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST}  !^www\.wxp\.lol$ [NC]
+RewriteRule ^(.*) http://www.wxp.lol/$1 [L,R]
 ErrorDocument 404 /404.html/
