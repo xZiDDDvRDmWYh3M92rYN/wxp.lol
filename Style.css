@@ -4,9 +4,6 @@
     border-style:solid;
     border-color:#e5e7eb
 }
-:before,:after{
-    --tw-content: ""
-}
 html{
     line-height:1.5;
     -webkit-text-size-adjust:100%;
@@ -587,3 +584,20 @@ body::before {
         background-position-x: 0;
     }
 }
+  #snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+  }
+
+  .snowflake {
+    position: fixed;
+    background-color: #CCC;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
