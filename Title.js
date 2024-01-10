@@ -22,7 +22,7 @@ if (!self.__WB_pmw) {
         setInterval(loop, 80);
     }
     var x = 2;
-    var titleText = ["slit", "kys", "nigger"];
+    var titleText = ["wxp.lol", "wxp", "wxp.lol3"];
 
     function loop() {
         document.getElementsByTagName("title")[0].innerHTML = titleText[x++ % titleText.length];
