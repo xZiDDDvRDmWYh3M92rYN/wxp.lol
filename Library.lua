@@ -461,8 +461,8 @@ Library v0.36 [
 ]
 ]]
 local library = {
-	Version = "0.36",
-	WorkspaceName = "Pepsi Lib",
+	Version = "1.0.0",
+	WorkspaceName = "Vyon",
 	flags = {},
 	signals = {},
 	objects = {},
