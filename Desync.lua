@@ -1,3 +1,11 @@
+if getgenv().Execution == true then
+    print("Already Executed")
+    return
+else
+    print("Executed")
+    getgenv().Execution = true
+end
+
 local RunService = game:GetService("RunService");
 local Player = game:GetService("Players").LocalPlayer.Character;
 local NetworkIsSleeping = true;
