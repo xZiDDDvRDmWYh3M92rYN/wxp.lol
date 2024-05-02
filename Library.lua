@@ -1,0 +1,151 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Mouse = Players.LocalPlayer:GetMouse()
+
+local Theme = {
+    Background = Color3.fromRGB(63, 63, 72),
+    Main = Color3.fromRGB(33, 33, 38),
+    Shadow = Color3.fromRGB(0, 0, 0),
+    TextDefault = Color3.fromRGB(200, 200, 200),
+    TextSelect = Color3.fromRGB(255, 255, 255)
+}
+
+local Library = {}
+
+function Library:Create(Title, Icon)
+    local Library_Main = Instance.new("ScreenGui")
+    local Background = Instance.new("Frame")
+    local Background_Corner = Instance.new("UICorner")
+    local Top_Bar = Instance.new("Frame")
+    local Top_Bar_Blocker = Instance.new("Frame")
+    local Top_Bar_Corner = Instance.new("UICorner")
+    local Shadow_Frame = Instance.new("Frame")
+    local Shadow_Main = Instance.new("ImageLabel")
+    local Side_Bar = Instance.new("Frame")
+    local Side_Corner = Instance.new("UICorner")
+    local Side_Blocker_1 = Instance.new("Frame")
+    local Side_Blocker_2 = Instance.new("Frame")
+    local Main_Holder = Instance.new("ScrollingFrame")
+    local Script_Image = Instance.new("ImageLabel")
+    local Script_Name = Instance.new("TextLabel")
+
+    Library_Main.Parent = game:GetService("CoreGui")
+    Library_Main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Library_Main.Name = "Library"
+    Library_Main.ResetOnSpawn = false
+
+    Background.Parent = Library_Main
+    Background.Name = "Background"
+    Background.BorderSizePixel = 0
+    Background.AnchorPoint = Vector2.new(0.5, 0.5)
+    Background.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Background.Size = UDim2.new(0, 400, 0, 260)
+    Background.BackgroundColor3 = Theme.Background
+
+    Background_Corner.Parent = Background
+    Background_Corner.Name = "Background_Corner"
+    Background_Corner.CornerRadius = UDim.new(0, 6)
+
+    Top_Bar.Parent = Background
+    Top_Bar.Name = "Top_Bar"
+    Top_BarBorderSizePixel = 0
+    Top_Bar.BackgroundColor3 = Theme.Main
+    Top_Bar.Position = UDim2.new(0, 0, 0, 0)
+    Top_Bar.Size = UDim2.new(0, 400, 0, 25)
+
+    Top_Bar_Blocker.Parent = Top_Bar
+    Top_Bar_Blocker.BorderSizePixel = 0
+    Top_Bar_Blocker.Name = "Top_Bar_Blocker"
+    Top_Bar_Blocker.AnchorPoint = Vector2.new(0, 1)
+    Top_Bar_Blocker.Position = UDim2.new(0, 0, 1, 0)
+    Top_Bar_Blocker.Size = UDim2.new(0, 400, 0, 10)
+    Top_Bar_Blocker.BackgroundColor3 = Theme.Main
+
+    Top_Bar_Corner.Parent = Top_Bar
+    Top_Bar_Corner.Name = "Top_Bar_Corner"
+    Top_Bar_Corner.CornerRadius = UDim.new(0, 4)
+
+    Shadow_Frame.Parent = Background
+    Shadow_Frame.BorderSizePixel = 0
+    Shadow_Frame.BackgroundTransparency = 1
+    Shadow_Frame.Name = "Shadow_Frame"
+    Shadow_Frame.ZIndex = 0
+    Shadow_Frame.Size = UDim2.new(1, 0, 1, 0)
+
+    Shadow_Main.Parent = Shadow_Frame
+    Shadow_Main.BorderSizePixel = 0
+    Shadow_Main.ZIndex = 0
+    Shadow_Main.BackgroundTransparency = 1
+    Shadow_Main.Name = "Shadow_Main"
+    Shadow_Main.AnchorPoint = Vector2.new(0.5, 0.5)
+    Shadow_Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Shadow_Main.Image = "rbxassetid://6014261993"
+    Shadow_Main.Size = UDim2.new(1, 50, 1, 50)
+    Shadow_Main.ImageColor3 = Theme.Shadow
+    Shadow_Main.ImageTransparency = 0.3
+    Shadow_Main.ScaleType = Enum.ScaleType.Slice
+    Shadow_Main.SliceCenter = Rect.new(49, 49, 450, 450)
+
+    Main_Holder.Name = "Main_Holder"
+    Main_Holder.Parent = Background
+    Main_Holder.Active = true
+    Main_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
+    Main_Holder.BackgroundTransparency = 1
+    Main_Holder.BorderColor3 = Color3.new(0, 0, 0)
+    Main_Holder.BorderSizePixel = 0
+    Main_Holder.Position = UDim2.new(0, 0, 0, 25)
+    Main_Holder.Size = UDim2.new(0, 400, 0, 235)
+    Main_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+    Side_Bar.Name = "Side_Bar"
+    Side_Bar.Parent = Main_Holder
+    Side_Bar.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+    Side_Bar.BorderColor3 = Color3.new(0, 0, 0)
+    Side_Bar.BorderSizePixel = 0
+    Side_Bar.Size = UDim2.new(0, 100, 0, 235)
+
+    Side_Corner.Parent = Side_Bar
+    Side_Corner.Name = "Side_Corner"
+    Side_Corner.CornerRadius = UDim.new(0, 6)
+
+    Side_Blocker_1.Name = "Side_Blocker_1"
+    Side_Blocker_1.Parent = Side_Bar
+    Side_Blocker_1.BackgroundColor3 = Theme.Main
+    Side_Blocker_1.BorderColor3 = Color3.new(0, 0, 0)
+    Side_Blocker_1.BorderSizePixel = 0
+    Side_Blocker_1.Size = UDim2.new(0, 100, 0, 10)
+
+    Side_Blocker_2.Name = "Side_Blocker_2"
+    Side_Blocker_2.Parent = Side_Bar
+    Side_Blocker_2.BackgroundColor3 = Theme.Main
+    Side_Blocker_2.BorderColor3 = Color3.new(0, 0, 0)
+    Side_Blocker_2.BorderSizePixel = 0
+    Side_Blocker_2.Position = UDim2.new(0.800000012, 0, 0, 0)
+    Side_Blocker_2.Size = UDim2.new(0, 20, 0, 235)
+
+    Script_Image.Name = "Script_Image"
+    Script_Image.Parent = Top_Bar
+    Script_Image.BackgroundColor3 = Color3.new(1, 1, 1)
+    Script_Image.BackgroundTransparency = 1
+    Script_Image.BorderColor3 = Color3.new(0, 0, 0)
+    Script_Image.BorderSizePixel = 0
+    Script_Image.Size = UDim2.new(0, 25, 0, 25)
+
+    Script_Name.Name = "Script_Name"
+    Script_Name.Parent = Top_Bar
+    Script_Name.AnchorPoint = Vector2.new(0.5, 0.5)
+    Script_Name.BackgroundColor3 = Color3.new(1, 1, 1)
+    Script_Name.BackgroundTransparency = 1
+    Script_Name.BorderColor3 = Color3.new(0, 0, 0)
+    Script_Name.BorderSizePixel = 0
+    Script_Name.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Script_Name.Size = UDim2.new(0, 200, 0, 25)
+    Script_Name.Font = Enum.Font.Gotham
+    Script_Name.Text = Title
+    Script_Name.TextColor3 = Theme.TextDefault
+    Script_Name.TextSize = 14
+end
+
+return Library
