@@ -186,7 +186,7 @@ function Library:Create(Title, Icon, Type)
         UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
 
         Tab.Name = "Tab"
-        Tab.Parent = Main_Tab_Holder
+        Tab.Parent = Tab_Holder
         Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Tab.BackgroundTransparency = 1
         Tab.BorderColor3 = Color3.new(0, 0, 0)
@@ -205,21 +205,21 @@ function Library:Create(Title, Icon, Type)
         Switch.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
         Switch.TextSize = 14
 
-        Tab_Holder.Name = "Tab"
-        Tab_Holder.Parent = Items
-        Tab_Holder.Active = true
-        Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
-        Tab_Holder.BackgroundTransparency = 1
-        Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
-        Tab_Holder.BorderSizePixel = 0
-        Tab_Holder.Size = UDim2.new(0, 300, 0, 235)
-        Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
+        Main_Tab_Holder.Name = "Tab"
+        Main_Tab_Holder.Parent = Items
+        Main_Tab_Holder.Active = true
+        Main_Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
+        Main_Tab_Holder.BackgroundTransparency = 1
+        Main_Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
+        Main_Tab_Holder.BorderSizePixel = 0
+        Main_Tab_Holder.Size = UDim2.new(0, 300, 0, 235)
+        Main_Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
 
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
                 v.Visible = false
             end
-            for i,t in next, Tabs:GetChildren() do
+            for i,t in next, Main_Tab_Holder:GetChildren() do
                 if t.ClassName ~= "UIGridLayout" then
                     t.TextColor3 = Color3.fromRGB(200, 200, 200)
                 end
