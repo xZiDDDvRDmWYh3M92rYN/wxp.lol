@@ -10,8 +10,8 @@ local function MakeDraggable(topbarobject, object)
 	local DragStart = nil
 	local StartPosition = nil
 	local function Update(input)
-		local Delta = input.Position - DragStart
-		local pos = UDim2.new(StartPosition.X.Scale, StartPosition.X.Offset + Delta.X, StartPosition.Y.Scale, StartPosition.Y.Offset + Delta.Y)
+		local INPPOS = input.Position - DragStart
+		local pos = UDim2.new(StartPosition.X.Scale, StartPosition.X.Offset + INPPOS.X, StartPosition.Y.Scale, StartPosition.Y.Offset + INPPOS.Y)
 		object.Position = pos
 	end
     topbarobject.InputBegan:Connect(function(input)
