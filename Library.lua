@@ -300,7 +300,7 @@ function Library:Create(Title, Icon)
             Button_Corner.Parent = Button
             Button_Corner.CornerRadius = UDim.new(0, 6)
 
-            Button.MouseButton1Click:Connect(function()
+            Click.MouseButton1Click:Connect(function()
                 pcall(callback)
             end)
         end
