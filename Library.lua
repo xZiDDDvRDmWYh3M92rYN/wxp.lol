@@ -291,6 +291,12 @@ function Library:Create(Title, Icon)
         Layout.SortOrder = Enum.SortOrder.LayoutOrder
         Layout.Padding = UDim.new(0, 5)
 
+        Main_Tab.ChildAdded:Connect(function()
+            if #Main_Tab:GetChildren() > 6 then
+                Main_Tab.CanvasSize = UDim2.new(0, 0,Main_Tab.CanvasSize.Y.Scale + 0.10,0)
+            end
+        end)
+
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
                 v.Visible = false
