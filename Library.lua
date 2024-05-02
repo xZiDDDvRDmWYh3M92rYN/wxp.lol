@@ -360,7 +360,7 @@ function Library:Create(Title, Icon)
             callback = callback or function() end
 
             Toggle.Name = "Toggle"
-            Toggle.Parent = Tab
+            Toggle.Parent = Main_Tab
             Toggle.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
             Toggle.BorderColor3 = Color3.new(0, 0, 0)
             Toggle.BorderSizePixel = 0
