@@ -426,6 +426,59 @@ function Library:Create(Title, Icon)
 
             Click.MouseButton1Click:Connect(Toggle)
         end
+
+        function InsideTab:TextBox(Placeholder, callback)
+            local Textbox_Holder = Instance.new("Frame")
+            local Textbox_Holder_Corner = Instance.new("UICorner")
+            local TextLabel = Instance.new("TextLabel")
+            local TextBox = Instance.new("TextBox")
+            local TextBox_Corner = Instance.new("UICorner")
+
+            Textbox_Holder.Name = "Textbox"
+            Textbox_Holder.Parent = Main_Tab
+            Textbox_Holder.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+            Textbox_Holder.BorderColor3 = Color3.new(0, 0, 0)
+            Textbox_Holder.BorderSizePixel = 0
+            Textbox_Holder.Position = UDim2.new(0.0416666679, 0, 0.577777803, 0)
+            Textbox_Holder.Size = UDim2.new(0, 275, 0, 30)
+
+            Textbox_Holder_Corner.Parent = Textbox
+            Textbox_Holder_Corner.CornerRadius = UDim.new(0, 6)
+
+            TextLabel.Parent = Textbox
+            TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+            TextLabel.BackgroundTransparency = 1
+            TextLabel.BorderColor3 = Color3.new(0, 0, 0)
+            TextLabel.BorderSizePixel = 0
+            TextLabel.Position = UDim2.new(0, 0, 0.0666666701, 0)
+            TextLabel.Size = UDim2.new(0, 110, 0, 25)
+            TextLabel.Font = Enum.Font.Gotham
+            TextLabel.Text = "Textbox"
+            TextLabel.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+            TextLabel.TextSize = 16
+
+            TextBox.Parent = Textbox
+            TextBox.BackgroundColor3 = Color3.new(0.101961, 0.101961, 0.117647)
+            TextBox.BorderColor3 = Color3.new(0, 0, 0)
+            TextBox.BorderSizePixel = 0
+            TextBox.Position = UDim2.new(0.400000006, 0, 0.100000001, 0)
+            TextBox.Size = UDim2.new(0, 162, 0, 24)
+            TextBox.Font = Enum.Font.Gotham
+            TextBox.PlaceholderColor3 = Theme.TextDefault
+            TextBox.PlaceholderText = Placeholder
+            TextBox.Text = ""
+            TextBox.TextColor3 = Theme.TextSelect
+            TextBox.TextSize = 14
+
+            TextBox_Corner.Parent = TextBox
+            TextBox_Corner.CornerRadius = UDim.new(0, 6)
+
+            TextBox.FocusLost:Connect(function()
+                task.spawn(function()
+                    pcall(callback, TextBox.Text)
+                end)
+            end)
+        end
         return InsideTab
     end
     return InsideLibrary
