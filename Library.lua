@@ -4,6 +4,49 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Mouse = Players.LocalPlayer:GetMouse()
 
+local CircleClick = {}
+
+function CircleClick(Button, X, Y)
+    local Circle = Instance.new("ImageLabel")
+    Circle.Name = "Circle"
+    Circle.Parent = Button
+    Circle.BackgroundColor3 = Color3.new(1, 1, 1)
+    Circle.BackgroundTransparency = 1
+    Circle.ZIndex = 10
+    Circle.Image = "rbxassetid://266543268"
+    Circle.ImageColor3 = Color3.new(0, 0, 0)
+    Circle.ImageTransparency = 0.9
+	coroutine.resume(coroutine.create(function()
+		
+		Button.ClipsDescendants = true
+		
+		local Circle = script:WaitForChild("Circle"):Clone()
+			Circle.Parent = Button
+			local NewX = X - Circle.AbsolutePosition.X
+			local NewY = Y - Circle.AbsolutePosition.Y
+			Circle.Position = UDim2.new(0, NewX, 0, NewY)
+		
+		local Size = 0
+			if Button.AbsoluteSize.X > Button.AbsoluteSize.Y then
+				 Size = Button.AbsoluteSize.X*1.5
+			elseif Button.AbsoluteSize.X < Button.AbsoluteSize.Y then
+				 Size = Button.AbsoluteSize.Y*1.5
+			elseif Button.AbsoluteSize.X == Button.AbsoluteSize.Y then																										Size = Button.AbsoluteSize.X*1.5
+			end
+		
+		local Time = 0.5
+			Circle:TweenSizeAndPosition(UDim2.new(0, Size, 0, Size), UDim2.new(0.5, -Size/2, 0.5, -Size/2), "Out", "Quad", Time, false, nil)
+			for i=1,10 do
+				Circle.ImageTransparency = Circle.ImageTransparency + 0.01
+				wait(Time/10)
+			end
+			Circle:Destroy()
+			
+	end))
+end
+
+return CircleClick
+
 local function MakeDraggable(topbarobject, object)
 	local Dragging = nil
 	local DragInput = nil
@@ -301,6 +344,7 @@ function Library:Create(Title, Icon)
             Button_Corner.CornerRadius = UDim.new(0, 6)
 
             Click.MouseButton1Click:Connect(function()
+                CircleClick(Click, Mouse.X, Mouse.Y)
                 pcall(callback)
             end)
 
