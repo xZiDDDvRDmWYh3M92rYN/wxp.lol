@@ -360,7 +360,7 @@ function Library:Create(Title, Icon)
             callback = callback or function() end
 
             Toggle.Name = "Toggle"
-            Toggle.Parent = game.StarterGui.Library.Background.Holder.Items.Tab
+            Toggle.Parent = Tab
             Toggle.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
             Toggle.BorderColor3 = Color3.new(0, 0, 0)
             Toggle.BorderSizePixel = 0
@@ -416,6 +416,14 @@ function Library:Create(Title, Icon)
                 end
             end
                 
+            Click.MouseEnter:Connect(function()
+                TweenService:Create(Click, TweenInfo.new(0.2), {TextColor3 = Theme.TextSelect}):Play()
+            end)
+
+            Click.MouseLeave:Connect(function()
+                TweenService:Create(Click, TweenInfo.new(0.2), {TextColor3 = Theme.TextDefault}):Play()
+            end)
+
             Click.MouseButton1Click:Connect(Toggle)
         end
         return InsideTab
