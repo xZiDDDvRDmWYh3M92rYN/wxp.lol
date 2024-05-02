@@ -4,8 +4,6 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Mouse = Players.LocalPlayer:GetMouse()
 
-local CircleClick = {}
-
 function CircleClick(Button, X, Y)
     local Circle = Instance.new("ImageLabel")
     Circle.Name = "Circle"
@@ -44,8 +42,6 @@ function CircleClick(Button, X, Y)
 			
 	end))
 end
-
-return CircleClick
 
 function MakeDraggable(topbarobject, object)
 	local Dragging = nil
