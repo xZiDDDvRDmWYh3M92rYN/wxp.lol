@@ -279,7 +279,7 @@ function Library:Create(Title, Icon)
         Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Main_Tab.BackgroundTransparency = 1
         Main_Tab.BorderColor3 = Color3.new(0, 0, 0)
-        Main_Tab.ScrollBarThickness = 1
+        Main_Tab.ScrollBarThickness = 0
         Main_Tab.VerticalScrollBarPosition = "Left"
         Main_Tab.ScrollingDirection = "Y"
         Main_Tab.BorderSizePixel = 0
@@ -295,7 +295,7 @@ function Library:Create(Title, Icon)
         Layout.Padding = UDim.new(0, 5)
 
         Main_Tab.ChildAdded:Connect(function()
-            if #Main_Tab:GetChildren() > 6 then
+            if #Main_Tab:GetChildren() > 7 then
                 Main_Tab.CanvasSize = UDim2.new(0, 0,Main_Tab.CanvasSize.Y.Scale + 0.10,0)
             end
         end)
