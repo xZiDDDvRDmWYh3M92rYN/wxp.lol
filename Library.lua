@@ -198,7 +198,7 @@ function Library:Create(Title, Icon, Type)
         Switch.TextSize = 14
 
         Main_Tab.Name = "Tab"
-        Main_Tab.Parent = game.StarterGui.Library.Background.Holder.Items
+        Main_Tab.Parent = Items
         Main_Tab.Active = true
         Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Main_Tab.BackgroundTransparency = 1
