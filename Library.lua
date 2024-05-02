@@ -232,7 +232,7 @@ function Library:Create(Title, Icon, Type)
         Switch.Size = UDim2.new(1, 0, 1, 0)
         Switch.Font = Enum.Font.Gotham
         Switch.Text = Tab_Name
-        Switch.TextColor3 = Color3.fromRGB(200, 200, 200)
+        Switch.TextColor3 = Theme.TextDefault
         Switch.TextSize = 14
 
         Main_Tab.Name = "Tab"
@@ -251,7 +251,7 @@ function Library:Create(Title, Icon, Type)
             end
             for i,t in next, Tab_Button:GetChildren() do
                 if t.ClassName ~= "UIGridLayout" then
-                    t.TextColor3 = Color3.fromRGB(200, 200, 200)
+                    t.TextColor3 = Theme.TextDefault
                 end
                 Switch.TextColor3 = Theme.TextSelect
             end
