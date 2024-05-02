@@ -247,8 +247,8 @@ function Library:Create(Title, Icon)
         Main_Tab.Size = UDim2.new(0, 300, 0, 235)
         Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-        Main_Tab.Parent = Items
-        Main_Tab.PaddingTop = UDim.new(0, 10)
+        Padding.Parent = Items
+        Padding.PaddingTop = UDim.new(0, 10)
 
         Layout.Parent = Main_Tab
         Layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
