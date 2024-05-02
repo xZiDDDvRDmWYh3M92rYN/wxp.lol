@@ -45,6 +45,7 @@ function Library:Create(Title, Icon, Type)
     Background.Position = UDim2.new(0.5, 0, 0.5, 0)
     Background.Size = UDim2.new(0, 400, 0, 260)
     Background.BackgroundColor3 = Theme.Background
+    Background.Draggable = true
 
     Background_Corner.Parent = Background
     Background_Corner.Name = "Background_Corner"
