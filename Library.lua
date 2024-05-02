@@ -205,7 +205,7 @@ function Library:Create(Title, Icon, Type)
         Switch.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
         Switch.TextSize = 14
 
-        Main_Tab.Name = Tab_Name
+        Main_Tab.Name = "Tab"
         Main_Tab.Parent = Items
         Main_Tab.Active = true
         Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
