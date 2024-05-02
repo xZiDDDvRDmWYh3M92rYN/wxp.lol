@@ -205,15 +205,15 @@ function Library:Create(Title, Icon, Type)
         Switch.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
         Switch.TextSize = 14
 
-        Main_Tab.Name = "Tab"
-        Main_Tab.Parent = Items
-        Main_Tab.Active = true
-        Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
-        Main_Tab.BackgroundTransparency = 1
-        Main_Tab.BorderColor3 = Color3.new(0, 0, 0)
-        Main_Tab.BorderSizePixel = 0
-        Main_Tab.Size = UDim2.new(0, 300, 0, 235)
-        Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
+        Tab.Name = "Tab"
+        Tab.Parent = Items
+        Tab.Active = true
+        Tab.BackgroundColor3 = Color3.new(1, 1, 1)
+        Tab.BackgroundTransparency = 1
+        Tab.BorderColor3 = Color3.new(0, 0, 0)
+        Tab.BorderSizePixel = 0
+        Tab.Size = UDim2.new(0, 300, 0, 235)
+        Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
@@ -225,7 +225,7 @@ function Library:Create(Title, Icon, Type)
                 end
                 Switch.TextColor3 = Theme.TextSelect
             end
-            Main_Tab.Visible = true
+            Tab.Visible = true
         end)
     end
     return InsideLibrary
