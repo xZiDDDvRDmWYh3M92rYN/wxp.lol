@@ -427,7 +427,7 @@ function Library:Create(Title, Icon)
             Click.MouseButton1Click:Connect(Toggle)
         end
 
-        function InsideTab:TextBox(Placeholder, callback)
+        function InsideTab:TextBox(TextLabel, Placeholder, callback)
             local Textbox_Holder = Instance.new("Frame")
             local Textbox_Holder_Corner = Instance.new("UICorner")
             local TextLabel = Instance.new("TextLabel")
@@ -453,7 +453,7 @@ function Library:Create(Title, Icon)
             TextLabel.Position = UDim2.new(0, 0, 0.0666666701, 0)
             TextLabel.Size = UDim2.new(0, 110, 0, 25)
             TextLabel.Font = Enum.Font.Gotham
-            TextLabel.Text = "Textbox"
+            TextLabel.Text = TextLabel
             TextLabel.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
             TextLabel.TextSize = 16
 
