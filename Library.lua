@@ -217,7 +217,7 @@ function Library:Create(Title, Icon, Type)
                 end
                 Switch.TextColor3 = Theme.TextSelect
             end
-            Tab.Visible = true
+            Main_Tab.Visible = true
         end)
     end
     return InsideLibrary
