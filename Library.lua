@@ -4,7 +4,7 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Mouse = Players.LocalPlayer:GetMouse()
 
-function CircleClick(Button, X, Y)
+function Ripple(Button, X, Y)
     local Circle = Instance.new("ImageLabel")
     Circle.Name = "Circle"
     Circle.Parent = Button
@@ -79,7 +79,9 @@ local Theme = {
     Main = Color3.fromRGB(33, 33, 38),
     Shadow = Color3.fromRGB(0, 0, 0),
     TextDefault = Color3.fromRGB(200, 200, 200),
-    TextSelect = Color3.fromRGB(255, 255, 255)
+    TextSelect = Color3.fromRGB(255, 255, 255),
+    Enabled = Color3.fromRGB(0, 176, 0),
+    Disabled = Color3.fromRGB(229, 0, 11)
 }
 
 local Library = {}
@@ -334,7 +336,7 @@ function Library:Create(Title, Icon)
             Button_Corner.CornerRadius = UDim.new(0, 6)
 
             Click.MouseButton1Click:Connect(function()
-                CircleClick(Click, Mouse.X, Mouse.Y)
+                Ripple(Click, Mouse.X, Mouse.Y)
                 pcall(callback)
             end)
 
@@ -345,6 +347,76 @@ function Library:Create(Title, Icon)
             Click.MouseLeave:Connect(function()
                 TweenService:Create(Click, TweenInfo.new(0.2), {TextColor3 = Theme.TextDefault}):Play()
             end)
+        end
+
+        function InsideTab:Toggle(ToggleText, callback)
+            local Toggle = Instance.new("Frame")
+            local Click = Instance.new("TextButton")
+            local Button_Corner = Instance.new("UICorner")
+            local Indicator = Instance.new("Frame")
+            local Indicator_Corner = Instance.new("UICorner")
+            local Block = Instance.new("Frame")
+
+            callback = callback or function() end
+
+            Toggle.Name = "Toggle"
+            Toggle.Parent = game.StarterGui.Library.Background.Holder.Items.Tab
+            Toggle.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+            Toggle.BorderColor3 = Color3.new(0, 0, 0)
+            Toggle.BorderSizePixel = 0
+            Toggle.Position = UDim2.new(0.0416666679, 0, 0, 0)
+            Toggle.Size = UDim2.new(0, 275, 0, 25)
+
+            Click.Name = "Click"
+            Click.Parent = Toggle
+            Click.BackgroundColor3 = Color3.new(1, 1, 1)
+            Click.BackgroundTransparency = 1
+            Click.BorderColor3 = Color3.new(0, 0, 0)
+            Click.BorderSizePixel = 0
+            Click.Size = UDim2.new(0, 275, 0, 25)
+            Click.Font = Enum.Font.Gotham
+            Click.Text = "Toggle"
+            Click.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+            Click.TextSize = 16
+
+            Button_Corner.Parent = Toggle
+            Button_Corner.CornerRadius = UDim.new(0, 6)
+
+            Indicator.Name = "Indicator"
+            Indicator.Parent = Toggle
+            Indicator.BackgroundColor3 = Color3.new(0.898039, 0, 0.0431373)
+            Indicator.BorderColor3 = Color3.new(0, 0, 0)
+            Indicator.BorderSizePixel = 0
+            Indicator.Size = UDim2.new(0, 25, 0, 25)
+
+            Indicator_Corner.Parent = Indicator
+            Indicator_Corner.CornerRadius = UDim.new(0, 4)
+
+            Block.Name = "Block"
+            Block.Parent = Indicator
+            Block.AnchorPoint = Vector2.new(1, 0)
+            Block.BackgroundColor3 = Color3.new(0.898039, 0, 0.0431373)
+            Block.BorderColor3 = Color3.new(0, 0, 0)
+            Block.BorderSizePixel = 0
+            Block.Position = UDim2.new(1, 0, 0, 0)
+            Block.Size = UDim2.new(0, 5, 0, 25)
+
+            local Enabled = false
+
+            function Toggle()
+                Ripple(Click, Mouse.X, Mouse.Y)
+                Enabled = not Enabled
+                pcall(callback,Enabled)
+                if Enabled then
+                    TweenService:Create(Indicator, TweenInfo.new(0.2), {BackgroundColor3 = Theme.Enabled}):Play()
+                    TweenService:Create(Block, TweenInfo.new(0.2), {BackgroundColor3 = Theme.Enabled}):Play()
+                else
+                    TweenService:Create(Indicator, TweenInfo.new(0.2), {BackgroundColor3 = Theme.Disabled}):Play()
+                    TweenService:Create(Block, TweenInfo.new(0.2), {BackgroundColor3 = Theme.Disabled}):Play()
+                end
+            end
+                
+            Click.MouseButton1Click:Connect(Toggle)
         end
         return InsideTab
     end
