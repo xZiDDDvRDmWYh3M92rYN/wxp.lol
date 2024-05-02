@@ -294,7 +294,7 @@ function Library:Create(Title, Icon)
             Click.Size = UDim2.new(0, 275, 0, 25)
             Click.Font = Enum.Font.Gotham
             Click.Text = TextButton
-            Click.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+            Click.TextColor3 = Theme.TextDefault
             Click.TextSize = 16
 
             Button_Corner.Parent = Button
@@ -302,6 +302,14 @@ function Library:Create(Title, Icon)
 
             Click.MouseButton1Click:Connect(function()
                 pcall(callback)
+            end)
+
+            Click.MouseEnter:Connect(function()
+                TweenService:Create(Click, TweenInfo.new(0.2), {TextColor3 = Theme.TextSelect}):Play()
+            end)
+
+            Click.MouseLeave:Connect(function()
+                TweenService:Create(Click, TweenInfo.new(0.2), {TextColor3 = Theme.TextDefault}):Play()
             end)
         end
         return InsideTab
