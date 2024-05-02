@@ -53,6 +53,7 @@ local Library = {}
 
 function Library:Create(Title, Icon, Type)
     local Library_Main = Instance.new("ScreenGui")
+    local Tab_Grid = Instance.new("UIGridLayout")
     local Background = Instance.new("Frame")
     local Background_Corner = Instance.new("UICorner")
     local Top_Bar = Instance.new("Frame")
@@ -208,20 +209,19 @@ function Library:Create(Title, Icon, Type)
     Tab_Button.ZIndex = 1
     Tab_Button.CanvasSize = UDim2.new(0, 0, 0, 0)
 
+    UIGridLayout.Parent = Tab_Button
+    UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
+
     MakeDraggable(Top_Bar, Background)
 
     local InsideLibrary = {}
 
     function InsideLibrary:Tab(Tab_Name)
         local Tab_Holder = Instance.new("ScrollingFrame")
-        local UIGridLayout = Instance.new("UIGridLayout")
         local Main_Tab = Instance.new("ScrollingFrame")
         local Switch = Instance.new("TextButton")
-
-        UIGridLayout.Parent = Tab_Button
-        UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-        UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
 
         Switch.Name = "Switch"
         Switch.Parent = Tab_Button
