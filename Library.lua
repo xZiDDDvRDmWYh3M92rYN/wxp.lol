@@ -270,12 +270,12 @@ function Library:Create(Title, Icon)
 
         local InsideTab = {}
 
-        function InsideTab:Button(TextButton, Callback)
+        function InsideTab:Button(TextButton, callback)
             local Button = Instance.new("Frame")
             local Click = Instance.new("TextButton")
             local Button_Corner = Instance.new("UICorner")
 
-            Callback = Callback or function() end
+            callback = callback or function() end
 
             Button.Name = "Button"
             Button.Parent = Main_Tab
@@ -301,7 +301,7 @@ function Library:Create(Title, Icon)
             UICorner.CornerRadius = UDim.new(0, 6)
 
             Button.MouseButton1Click:Connect(function()
-                pcall(Callback)
+                pcall(callback)
             end)
         end
     end
