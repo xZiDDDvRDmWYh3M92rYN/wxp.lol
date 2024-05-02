@@ -31,7 +31,7 @@ function Library:Create(Title, Icon, Type)
     local Script_Image = Instance.new("ImageLabel")
     local Script_Name = Instance.new("TextLabel")
     local Items = Instance.new("ScrollingFrame")
-    local Main_Tab_Holder = Instance.new("ScrollingFrame")
+    local Tab_Button = Instance.new("ScrollingFrame")
 
     Library_Main.Parent = game:GetService("CoreGui")
     Library_Main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -161,16 +161,16 @@ function Library:Create(Title, Icon, Type)
     Items.Size = UDim2.new(0, 300, 0, 235)
     Items.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-    Main_Tab_Holder.Name = "Tab_Holder"
-    Main_Tab_Holder.Parent = Side_Bar
-    Main_Tab_Holder.Active = true
-    Main_Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
-    Main_Tab_Holder.BackgroundTransparency = 1
-    Main_Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
-    Main_Tab_Holder.BorderSizePixel = 0
-    Main_Tab_Holder.Size = UDim2.new(0, 100, 0, 235)
-    Main_Tab_Holder.ZIndex = 2
-    Main_Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
+    Tab_Button.Name = "Tab_Button"
+    Tab_Button.Parent = Side_Bar
+    Tab_Button.Active = true
+    Tab_Button.BackgroundColor3 = Color3.new(1, 1, 1)
+    Tab_Button.BackgroundTransparency = 1
+    Tab_Button.BorderColor3 = Color3.new(0, 0, 0)
+    Tab_Button.BorderSizePixel = 0
+    Tab_Button.Size = UDim2.new(0, 100, 0, 235)
+    Tab_Button.ZIndex = 1
+    Tab_Button.CanvasSize = UDim2.new(0, 0, 0, 0)
 
     local InsideLibrary = {}
 
@@ -180,13 +180,13 @@ function Library:Create(Title, Icon, Type)
         local Tab = Instance.new("Frame")
         local Switch = Instance.new("TextButton")
 
-        UIGridLayout.Parent = Main_Tab_Holder
+        UIGridLayout.Parent = Tab_Button
         UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
         UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
 
         Tab.Name = "Tab"
-        Tab.Parent = Main_Tab_Holder
+        Tab.Parent = Tab_Button
         Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Tab.BackgroundTransparency = 1
         Tab.BorderColor3 = Color3.new(0, 0, 0)
