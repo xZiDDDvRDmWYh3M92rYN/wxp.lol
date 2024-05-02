@@ -228,6 +228,7 @@ function Library:Create(Title, Icon, Type)
             Main_Tab.Visible = true
         end)
     end
+    return InsideLibrary
 end
 
 return Library
