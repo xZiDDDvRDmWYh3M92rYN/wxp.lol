@@ -223,6 +223,7 @@ function Library:Create(Title, Icon)
         local Main_Tab = Instance.new("ScrollingFrame")
         local Switch = Instance.new("TextButton")
         local Layout = Instance.new("UIListLayout")
+        local Padding = Instance.new("UIPadding")
 
         Switch.Name = "Switch"
         Switch.Parent = Tab_Button
@@ -245,7 +246,10 @@ function Library:Create(Title, Icon)
         Main_Tab.BorderSizePixel = 0
         Main_Tab.Size = UDim2.new(0, 300, 0, 235)
         Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
-        
+
+        Main_Tab.Parent = Items
+        Main_Tab.PaddingTop = UDim.new(0, 10)
+
         Layout.Parent = Main_Tab
         Layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         Layout.SortOrder = Enum.SortOrder.LayoutOrder
