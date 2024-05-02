@@ -297,8 +297,8 @@ function Library:Create(Title, Icon)
             Click.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
             Click.TextSize = 16
 
-            UICorner.Parent = Button
-            UICorner.CornerRadius = UDim.new(0, 6)
+            Button_Corner.Parent = Button
+            Button_Corner.CornerRadius = UDim.new(0, 6)
 
             Button.MouseButton1Click:Connect(function()
                 pcall(callback)
