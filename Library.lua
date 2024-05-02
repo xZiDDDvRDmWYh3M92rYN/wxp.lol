@@ -304,6 +304,7 @@ function Library:Create(Title, Icon)
                 pcall(callback)
             end)
         end
+        return InsideTab
     end
     return InsideLibrary
 end
