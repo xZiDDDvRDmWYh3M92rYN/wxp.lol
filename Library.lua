@@ -209,10 +209,10 @@ function Library:Create(Title, Icon, Type)
     Tab_Button.ZIndex = 1
     Tab_Button.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-    UIGridLayout.Parent = Tab_Button
-    UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-    UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
+    Tab_Grid.Parent = Tab_Button
+    Tab_Grid.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    Tab_Grid.SortOrder = Enum.SortOrder.LayoutOrder
+    Tab_Grid.CellSize = UDim2.new(0, 95, 0, 25)
 
     MakeDraggable(Top_Bar, Background)
 
