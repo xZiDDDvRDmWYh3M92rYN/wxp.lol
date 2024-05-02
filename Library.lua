@@ -4,6 +4,43 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Mouse = Players.LocalPlayer:GetMouse()
 
+local function MakeDraggable(topbarobject, object)
+	local Dragging = nil
+	local DragInput = nil
+	local DragStart = nil
+	local StartPosition = nil
+	local function Update(input)
+		local Delta = input.Position - DragStart
+		local pos = UDim2.new(StartPosition.X.Scale, StartPosition.X.Offset + Delta.X, StartPosition.Y.Scale, StartPosition.Y.Offset + Delta.Y)
+		object.Position = pos
+	end
+    topbarobject.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			Dragging = true
+			DragStart = input.Position
+			StartPosition = object.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					Dragging = false
+                end
+			end)
+		end
+	end)
+	topbarobject.InputChanged:Connect(function(input)
+		if
+			input.UserInputType == Enum.UserInputType.MouseMovement or
+				input.UserInputType == Enum.UserInputType.Touch
+		then
+			DragInput = input
+		end
+	end)
+    UserInputService.InputChanged:Connect(function(input)
+	    if input == DragInput and Dragging then
+		    Update(input)
+		end
+	end)
+end
+
 local Theme = {
     Background = Color3.fromRGB(63, 63, 72),
     Main = Color3.fromRGB(33, 33, 38),
@@ -45,7 +82,6 @@ function Library:Create(Title, Icon, Type)
     Background.Position = UDim2.new(0.5, 0, 0.5, 0)
     Background.Size = UDim2.new(0, 400, 0, 260)
     Background.BackgroundColor3 = Theme.Background
-    Background.Draggable = true
 
     Background_Corner.Parent = Background
     Background_Corner.Name = "Background_Corner"
@@ -57,7 +93,6 @@ function Library:Create(Title, Icon, Type)
     Top_Bar.BackgroundColor3 = Theme.Main
     Top_Bar.Position = UDim2.new(0, 0, 0, 0)
     Top_Bar.Size = UDim2.new(0, 400, 0, 25)
-    Top_Bar.Draggable = true
     
     Top_Bar_Blocker.Parent = Top_Bar
     Top_Bar_Blocker.BorderSizePixel = 0
@@ -172,6 +207,8 @@ function Library:Create(Title, Icon, Type)
     Tab_Button.Size = UDim2.new(0, 100, 0, 235)
     Tab_Button.ZIndex = 1
     Tab_Button.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+    MakeDraggable(Top_Bar, Background)
 
     local InsideLibrary = {}
 
