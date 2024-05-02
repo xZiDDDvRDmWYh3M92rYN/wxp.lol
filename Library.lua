@@ -15,15 +15,11 @@ function CircleClick(Button, X, Y)
     Circle.ImageColor3 = Color3.new(0, 0, 0)
     Circle.ImageTransparency = 0.9
 	coroutine.resume(coroutine.create(function()
-		
 		Button.ClipsDescendants = true
-		
-		local Circle = script:WaitForChild("Circle"):Clone()
 			Circle.Parent = Button
 			local NewX = X - Circle.AbsolutePosition.X
 			local NewY = Y - Circle.AbsolutePosition.Y
 			Circle.Position = UDim2.new(0, NewX, 0, NewY)
-		
 		local Size = 0
 			if Button.AbsoluteSize.X > Button.AbsoluteSize.Y then
 				 Size = Button.AbsoluteSize.X*1.5
@@ -31,7 +27,6 @@ function CircleClick(Button, X, Y)
 				 Size = Button.AbsoluteSize.Y*1.5
 			elseif Button.AbsoluteSize.X == Button.AbsoluteSize.Y then																										Size = Button.AbsoluteSize.X*1.5
 			end
-		
 		local Time = 0.5
 			Circle:TweenSizeAndPosition(UDim2.new(0, Size, 0, Size), UDim2.new(0.5, -Size/2, 0.5, -Size/2), "Out", "Quad", Time, false, nil)
 			for i=1,10 do
@@ -39,7 +34,6 @@ function CircleClick(Button, X, Y)
 				wait(Time/10)
 			end
 			Circle:Destroy()
-			
 	end))
 end
 
