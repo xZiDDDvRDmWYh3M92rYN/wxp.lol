@@ -177,7 +177,7 @@ function Library:Create(Title, Icon, Type)
     function InsideLibrary:Tab(Tab_Name)
         local Tab_Holder = Instance.new("ScrollingFrame")
         local UIGridLayout = Instance.new("UIGridLayout")
-        local Tab = Instance.new("Frame")
+        local Main_Tab = Instance.new("ScrollingFrame")
         local Switch = Instance.new("TextButton")
 
         UIGridLayout.Parent = Tab_Button
@@ -185,16 +185,8 @@ function Library:Create(Title, Icon, Type)
         UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
         UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
 
-        Tab.Name = "Tab"
-        Tab.Parent = Tab_Button
-        Tab.BackgroundColor3 = Color3.new(1, 1, 1)
-        Tab.BackgroundTransparency = 1
-        Tab.BorderColor3 = Color3.new(0, 0, 0)
-        Tab.BorderSizePixel = 0
-        Tab.Size = UDim2.new(0, 100, 0, 100)
-
         Switch.Name = "Switch"
-        Switch.Parent = Tab
+        Switch.Parent = Tab_Button
         Switch.BackgroundColor3 = Color3.new(1, 1, 1)
         Switch.BackgroundTransparency = 1
         Switch.BorderColor3 = Color3.new(0, 0, 0)
@@ -202,24 +194,24 @@ function Library:Create(Title, Icon, Type)
         Switch.Size = UDim2.new(1, 0, 1, 0)
         Switch.Font = Enum.Font.Gotham
         Switch.Text = Tab_Name
-        Switch.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+        Switch.TextColor3 = Color3.fromRGB(200, 200, 200)
         Switch.TextSize = 14
 
-        Main_Tab_Holder.Name = "Tab"
-        Main_Tab_Holder.Parent = Items
-        Main_Tab_Holder.Active = true
-        Main_Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
-        Main_Tab_Holder.BackgroundTransparency = 1
-        Main_Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
-        Main_Tab_Holder.BorderSizePixel = 0
-        Main_Tab_Holder.Size = UDim2.new(0, 300, 0, 235)
-        Main_Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
+        Main_Tab.Name = "Tab"
+        Main_Tab.Parent = game.StarterGui.Library.Background.Holder.Items
+        Main_Tab.Active = true
+        Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
+        Main_Tab.BackgroundTransparency = 1
+        Main_Tab.BorderColor3 = Color3.new(0, 0, 0)
+        Main_Tab.BorderSizePixel = 0
+        Main_Tab.Size = UDim2.new(0, 300, 0, 235)
+        Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
                 v.Visible = false
             end
-            for i,t in next, Main_Tab_Holder:GetChildren() do
+            for i,t in next, Tab_Button:GetChildren() do
                 if t.ClassName ~= "UIGridLayout" then
                     t.TextColor3 = Color3.fromRGB(200, 200, 200)
                 end
