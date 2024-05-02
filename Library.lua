@@ -31,6 +31,7 @@ function Library:Create(Title, Icon, Type)
     local Script_Image = Instance.new("ImageLabel")
     local Script_Name = Instance.new("TextLabel")
     local Items = Instance.new("ScrollingFrame")
+    local Main_Tab_Holder = Instance.new("ScrollingFrame")
 
     Library_Main.Parent = game:GetService("CoreGui")
     Library_Main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -160,6 +161,17 @@ function Library:Create(Title, Icon, Type)
     Items.Size = UDim2.new(0, 300, 0, 235)
     Items.CanvasSize = UDim2.new(0, 0, 0, 0)
 
+    Main_Tab_Holder.Name = "Tab_Holder"
+    Main_Tab_Holder.Parent = Side
+    Main_Tab_Holder.Active = true
+    Main_Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
+    Main_Tab_Holder.BackgroundTransparency = 1
+    Main_Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
+    Main_Tab_Holder.BorderSizePixel = 0
+    Main_Tab_Holder.Size = UDim2.new(0, 100, 0, 235)
+    Main_Tab_Holder.ZIndex = 2
+    Main_Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
+
     local InsideLibrary = {}
 
     function InsideLibrary:Tab(Tab_Name)
@@ -167,26 +179,14 @@ function Library:Create(Title, Icon, Type)
         local UIGridLayout = Instance.new("UIGridLayout")
         local Tab = Instance.new("Frame")
         local Switch = Instance.new("TextButton")
-        local Main_Tab = Instance.new("ScrollingFrame")
 
-        Tab_Holder.Name = "Tab_Holder"
-        Tab_Holder.Parent = Side
-        Tab_Holder.Active = true
-        Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
-        Tab_Holder.BackgroundTransparency = 1
-        Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
-        Tab_Holder.BorderSizePixel = 0
-        Tab_Holder.Size = UDim2.new(0, 100, 0, 235)
-        Tab_Holder.ZIndex = 2
-        Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
-
-        UIGridLayout.Parent = Tab_Holder
+        UIGridLayout.Parent = Main_Tab_Holder
         UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
         UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
 
         Tab.Name = "Tab"
-        Tab.Parent = Tab_Holder
+        Tab.Parent = Main_Tab_Holder
         Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Tab.BackgroundTransparency = 1
         Tab.BorderColor3 = Color3.new(0, 0, 0)
