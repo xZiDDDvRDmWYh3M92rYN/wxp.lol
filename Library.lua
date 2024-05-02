@@ -247,7 +247,7 @@ function Library:Create(Title, Icon)
         Main_Tab.Size = UDim2.new(0, 300, 0, 235)
         Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-        Padding.Parent = Items
+        Padding.Parent = Main_Tab
         Padding.PaddingTop = UDim.new(0, 10)
 
         Layout.Parent = Main_Tab
