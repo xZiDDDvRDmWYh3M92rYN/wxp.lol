@@ -284,12 +284,12 @@ function Library:Create(Title, Icon)
         Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 
         Padding.Parent = Main_Tab
-        Padding.PaddingTop = UDim.new(0, 10)
+        Padding.PaddingTop = UDim.new(0, 5)
 
         Layout.Parent = Main_Tab
         Layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         Layout.SortOrder = Enum.SortOrder.LayoutOrder
-        Layout.Padding = UDim.new(0, 10)
+        Layout.Padding = UDim.new(0, 5)
 
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
@@ -319,7 +319,7 @@ function Library:Create(Title, Icon)
             Button.BorderColor3 = Color3.new(0, 0, 0)
             Button.BorderSizePixel = 0
             Button.Position = UDim2.new(0.0416666679, 0, 0, 0)
-            Button.Size = UDim2.new(0, 275, 0, 25)
+            Button.Size = UDim2.new(0, 290, 0, 25)
 
             Click.Name = "Click"
             Click.Parent = Button
@@ -327,11 +327,11 @@ function Library:Create(Title, Icon)
             Click.BackgroundTransparency = 1
             Click.BorderColor3 = Color3.new(0, 0, 0)
             Click.BorderSizePixel = 0
-            Click.Size = UDim2.new(0, 275, 0, 25)
+            Click.Size = UDim2.new(0, 290, 0, 25)
             Click.Font = Enum.Font.Gotham
             Click.Text = TextButton
             Click.TextColor3 = Theme.TextDefault
-            Click.TextSize = 16
+            Click.TextSize = 14
 
             Button_Corner.Parent = Button
             Button_Corner.CornerRadius = UDim.new(0, 6)
@@ -366,7 +366,7 @@ function Library:Create(Title, Icon)
             Toggle.BorderColor3 = Color3.new(0, 0, 0)
             Toggle.BorderSizePixel = 0
             Toggle.Position = UDim2.new(0.0416666679, 0, 0, 0)
-            Toggle.Size = UDim2.new(0, 275, 0, 25)
+            Toggle.Size = UDim2.new(0, 290, 0, 25)
 
             Click.Name = "Click"
             Click.Parent = Toggle
@@ -374,11 +374,11 @@ function Library:Create(Title, Icon)
             Click.BackgroundTransparency = 1
             Click.BorderColor3 = Color3.new(0, 0, 0)
             Click.BorderSizePixel = 0
-            Click.Size = UDim2.new(0, 275, 0, 25)
+            Click.Size = UDim2.new(0, 290, 0, 25)
             Click.Font = Enum.Font.Gotham
             Click.Text = "Toggle"
             Click.TextColor3 = Theme.TextSelect
-            Click.TextSize = 16
+            Click.TextSize = 14
 
             Button_Corner.Parent = Toggle
             Button_Corner.CornerRadius = UDim.new(0, 6)
@@ -441,7 +441,7 @@ function Library:Create(Title, Icon)
             Textbox_Holder.BorderColor3 = Color3.new(0, 0, 0)
             Textbox_Holder.BorderSizePixel = 0
             Textbox_Holder.Position = UDim2.new(0.0416666679, 0, 0.577777803, 0)
-            Textbox_Holder.Size = UDim2.new(0, 275, 0, 30)
+            Textbox_Holder.Size = UDim2.new(0, 290, 0, 30)
 
             Textbox_Holder_Corner.Parent = Textbox_Holder
             Textbox_Holder_Corner.CornerRadius = UDim.new(0, 6)
@@ -456,7 +456,7 @@ function Library:Create(Title, Icon)
             TextLabel.Font = Enum.Font.Gotham
             TextLabel.Text = Label
             TextLabel.TextColor3 = Theme.TextDefault
-            TextLabel.TextSize = 16
+            TextLabel.TextSize = 14
 
             TextBox.Parent = Textbox_Holder
             TextBox.BackgroundColor3 = Theme.Main2
