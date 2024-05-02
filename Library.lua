@@ -162,7 +162,7 @@ function Library:Create(Title, Icon, Type)
     Items.CanvasSize = UDim2.new(0, 0, 0, 0)
 
     Main_Tab_Holder.Name = "Tab_Holder"
-    Main_Tab_Holder.Parent = Side
+    Main_Tab_Holder.Parent = Side_Bar
     Main_Tab_Holder.Active = true
     Main_Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
     Main_Tab_Holder.BackgroundTransparency = 1
