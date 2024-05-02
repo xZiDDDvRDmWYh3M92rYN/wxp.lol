@@ -186,7 +186,7 @@ function Library:Create(Title, Icon, Type)
         UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
 
         Tab.Name = "Tab"
-        Tab.Parent = Tab_Holder
+        Tab.Parent = Main_Tab_Holder
         Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Tab.BackgroundTransparency = 1
         Tab.BorderColor3 = Color3.new(0, 0, 0)
