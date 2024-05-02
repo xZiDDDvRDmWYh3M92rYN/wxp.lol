@@ -47,7 +47,7 @@ end
 
 return CircleClick
 
-local function MakeDraggable(topbarobject, object)
+function MakeDraggable(topbarobject, object)
 	local Dragging = nil
 	local DragInput = nil
 	local DragStart = nil
