@@ -279,9 +279,12 @@ function Library:Create(Title, Icon)
         Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
         Main_Tab.BackgroundTransparency = 1
         Main_Tab.BorderColor3 = Color3.new(0, 0, 0)
+        Main_Tab.ScrollBarThickness = 1
+        Main_Tab.VerticalScrollBarPosition = "Left"
+        Main_Tab.ScrollingDirection = "Y"
         Main_Tab.BorderSizePixel = 0
         Main_Tab.Size = UDim2.new(0, 300, 0, 235)
-        Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
+        Main_Tab.CanvasSize = UDim2.new(0, 0, 1, 0)
 
         Padding.Parent = Main_Tab
         Padding.PaddingTop = UDim.new(0, 5)
