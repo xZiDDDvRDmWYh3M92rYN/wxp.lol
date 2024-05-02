@@ -77,6 +77,7 @@ end
 local Theme = {
     Background = Color3.fromRGB(63, 63, 72),
     Main = Color3.fromRGB(33, 33, 38),
+    Main2 = Color3.fromRGB(26, 26, 30),
     Shadow = Color3.fromRGB(0, 0, 0),
     TextDefault = Color3.fromRGB(200, 200, 200),
     TextSelect = Color3.fromRGB(255, 255, 255),
@@ -176,7 +177,7 @@ function Library:Create(Title, Icon)
 
     Side_Bar.Name = "Side_Bar"
     Side_Bar.Parent = Main_Holder
-    Side_Bar.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+    Side_Bar.BackgroundColor3 = Theme.Main
     Side_Bar.BorderColor3 = Color3.new(0, 0, 0)
     Side_Bar.BorderSizePixel = 0
     Side_Bar.Size = UDim2.new(0, 100, 0, 235)
@@ -305,16 +306,16 @@ function Library:Create(Title, Icon)
 
         local InsideTab = {}
 
-        function InsideTab:Button(TextButton, callback)
+        function InsideTab:Button(TextButton, Callback)
             local Button = Instance.new("Frame")
             local Click = Instance.new("TextButton")
             local Button_Corner = Instance.new("UICorner")
 
-            callback = callback or function() end
+            Callback = Callback or function() end
 
             Button.Name = "Button"
             Button.Parent = Main_Tab
-            Button.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+            Button.BackgroundColor3 = Theme.Main
             Button.BorderColor3 = Color3.new(0, 0, 0)
             Button.BorderSizePixel = 0
             Button.Position = UDim2.new(0.0416666679, 0, 0, 0)
@@ -337,7 +338,7 @@ function Library:Create(Title, Icon)
 
             Click.MouseButton1Click:Connect(function()
                 Ripple(Click, Mouse.X, Mouse.Y)
-                pcall(callback)
+                pcall(Callback)
             end)
 
             Click.MouseEnter:Connect(function()
@@ -349,7 +350,7 @@ function Library:Create(Title, Icon)
             end)
         end
 
-        function InsideTab:Toggle(ToggleText, callback)
+        function InsideTab:Toggle(ToggleText, Callback)
             local Toggle = Instance.new("Frame")
             local Click = Instance.new("TextButton")
             local Button_Corner = Instance.new("UICorner")
@@ -357,11 +358,11 @@ function Library:Create(Title, Icon)
             local Indicator_Corner = Instance.new("UICorner")
             local Block = Instance.new("Frame")
 
-            callback = callback or function() end
+            Callback = Callback or function() end
 
             Toggle.Name = "Toggle"
             Toggle.Parent = Main_Tab
-            Toggle.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+            Toggle.BackgroundColor3 = Theme.Main
             Toggle.BorderColor3 = Color3.new(0, 0, 0)
             Toggle.BorderSizePixel = 0
             Toggle.Position = UDim2.new(0.0416666679, 0, 0, 0)
@@ -376,7 +377,7 @@ function Library:Create(Title, Icon)
             Click.Size = UDim2.new(0, 275, 0, 25)
             Click.Font = Enum.Font.Gotham
             Click.Text = "Toggle"
-            Click.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+            Click.TextColor3 = Theme.TextSelect
             Click.TextSize = 16
 
             Button_Corner.Parent = Toggle
@@ -384,7 +385,7 @@ function Library:Create(Title, Icon)
 
             Indicator.Name = "Indicator"
             Indicator.Parent = Toggle
-            Indicator.BackgroundColor3 = Color3.new(0.898039, 0, 0.0431373)
+            Indicator.BackgroundColor3 = Theme.Disabled
             Indicator.BorderColor3 = Color3.new(0, 0, 0)
             Indicator.BorderSizePixel = 0
             Indicator.Size = UDim2.new(0, 25, 0, 25)
@@ -395,7 +396,7 @@ function Library:Create(Title, Icon)
             Block.Name = "Block"
             Block.Parent = Indicator
             Block.AnchorPoint = Vector2.new(1, 0)
-            Block.BackgroundColor3 = Color3.new(0.898039, 0, 0.0431373)
+            Block.BackgroundColor3 = Theme.Disabled
             Block.BorderColor3 = Color3.new(0, 0, 0)
             Block.BorderSizePixel = 0
             Block.Position = UDim2.new(1, 0, 0, 0)
@@ -406,7 +407,7 @@ function Library:Create(Title, Icon)
             function Toggle()
                 Ripple(Click, Mouse.X, Mouse.Y)
                 Enabled = not Enabled
-                pcall(callback,Enabled)
+                pcall(Callback,Enabled)
                 if Enabled then
                     TweenService:Create(Indicator, TweenInfo.new(0.2), {BackgroundColor3 = Theme.Enabled}):Play()
                     TweenService:Create(Block, TweenInfo.new(0.2), {BackgroundColor3 = Theme.Enabled}):Play()
@@ -427,7 +428,7 @@ function Library:Create(Title, Icon)
             Click.MouseButton1Click:Connect(Toggle)
         end
 
-        function InsideTab:TextBox(Label, Placeholder, callback)
+        function InsideTab:TextBox(Label, Placeholder, Callback)
             local Textbox_Holder = Instance.new("Frame")
             local Textbox_Holder_Corner = Instance.new("UICorner")
             local TextLabel = Instance.new("TextLabel")
@@ -436,7 +437,7 @@ function Library:Create(Title, Icon)
 
             Textbox_Holder.Name = "Textbox"
             Textbox_Holder.Parent = Main_Tab
-            Textbox_Holder.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+            Textbox_Holder.BackgroundColor3 = Theme.Main
             Textbox_Holder.BorderColor3 = Color3.new(0, 0, 0)
             Textbox_Holder.BorderSizePixel = 0
             Textbox_Holder.Position = UDim2.new(0.0416666679, 0, 0.577777803, 0)
@@ -454,11 +455,11 @@ function Library:Create(Title, Icon)
             TextLabel.Size = UDim2.new(0, 110, 0, 25)
             TextLabel.Font = Enum.Font.Gotham
             TextLabel.Text = Label
-            TextLabel.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+            TextLabel.TextColor3 = Theme.TextSelect
             TextLabel.TextSize = 16
 
             TextBox.Parent = Textbox_Holder
-            TextBox.BackgroundColor3 = Color3.new(0.101961, 0.101961, 0.117647)
+            TextBox.BackgroundColor3 = Theme.Main2
             TextBox.BorderColor3 = Color3.new(0, 0, 0)
             TextBox.BorderSizePixel = 0
             TextBox.Position = UDim2.new(0.400000006, 0, 0.100000001, 0)
@@ -475,7 +476,7 @@ function Library:Create(Title, Icon)
 
             TextBox.FocusLost:Connect(function()
                 task.spawn(function()
-                    pcall(callback, TextBox.Text)
+                    pcall(Callback, TextBox.Text)
                 end)
             end)
         end
