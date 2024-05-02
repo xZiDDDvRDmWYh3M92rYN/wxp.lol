@@ -51,7 +51,7 @@ local Theme = {
 
 local Library = {}
 
-function Library:Create(Title, Icon, Type)
+function Library:Create(Title, Icon)
     local Library_Main = Instance.new("ScreenGui")
     local Tab_Grid = Instance.new("UIGridLayout")
     local Background = Instance.new("Frame")
@@ -222,6 +222,7 @@ function Library:Create(Title, Icon, Type)
         local Tab_Holder = Instance.new("ScrollingFrame")
         local Main_Tab = Instance.new("ScrollingFrame")
         local Switch = Instance.new("TextButton")
+        local Layout = Instance.new("UIListLayout")
 
         Switch.Name = "Switch"
         Switch.Parent = Tab_Button
@@ -244,6 +245,11 @@ function Library:Create(Title, Icon, Type)
         Main_Tab.BorderSizePixel = 0
         Main_Tab.Size = UDim2.new(0, 300, 0, 235)
         Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
+        
+        Layout.Parent = Main_Tab
+        Layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+        Layout.SortOrder = Enum.SortOrder.LayoutOrder
+        Layout.Padding = UDim.new(0, 10)
 
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
@@ -257,6 +263,43 @@ function Library:Create(Title, Icon, Type)
             end
             Main_Tab.Visible = true
         end)
+
+        local InsideTab = {}
+
+        function InsideTab:Button(TextButton, Callback)
+            local Button = Instance.new("Frame")
+            local Click = Instance.new("TextButton")
+            local Button_Corner = Instance.new("UICorner")
+
+            Callback = Callback or function() end
+
+            Button.Name = "Button"
+            Button.Parent = Main_Tab
+            Button.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.14902)
+            Button.BorderColor3 = Color3.new(0, 0, 0)
+            Button.BorderSizePixel = 0
+            Button.Position = UDim2.new(0.0416666679, 0, 0, 0)
+            Button.Size = UDim2.new(0, 275, 0, 25)
+
+            Click.Name = "Click"
+            Click.Parent = Button
+            Click.BackgroundColor3 = Color3.new(1, 1, 1)
+            Click.BackgroundTransparency = 1
+            Click.BorderColor3 = Color3.new(0, 0, 0)
+            Click.BorderSizePixel = 0
+            Click.Size = UDim2.new(0, 275, 0, 25)
+            Click.Font = Enum.Font.Gotham
+            Click.Text = TextButton
+            Click.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+            Click.TextSize = 16
+
+            UICorner.Parent = Button
+            UICorner.CornerRadius = UDim.new(0, 6)
+
+            Button.MouseButton1Click:Connect(function()
+                pcall(Callback)
+            end)
+        end
     end
     return InsideLibrary
 end
