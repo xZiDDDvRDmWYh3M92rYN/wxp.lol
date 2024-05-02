@@ -442,10 +442,10 @@ function Library:Create(Title, Icon)
             Textbox_Holder.Position = UDim2.new(0.0416666679, 0, 0.577777803, 0)
             Textbox_Holder.Size = UDim2.new(0, 275, 0, 30)
 
-            Textbox_Holder_Corner.Parent = Textbox
+            Textbox_Holder_Corner.Parent = Textbox_Holder
             Textbox_Holder_Corner.CornerRadius = UDim.new(0, 6)
 
-            TextLabel.Parent = Textbox
+            TextLabel.Parent = Textbox_Holder
             TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
             TextLabel.BackgroundTransparency = 1
             TextLabel.BorderColor3 = Color3.new(0, 0, 0)
@@ -457,7 +457,7 @@ function Library:Create(Title, Icon)
             TextLabel.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
             TextLabel.TextSize = 16
 
-            TextBox.Parent = Textbox
+            TextBox.Parent = Textbox_Holder
             TextBox.BackgroundColor3 = Color3.new(0.101961, 0.101961, 0.117647)
             TextBox.BorderColor3 = Color3.new(0, 0, 0)
             TextBox.BorderSizePixel = 0
