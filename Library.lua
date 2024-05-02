@@ -205,15 +205,15 @@ function Library:Create(Title, Icon, Type)
         Switch.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
         Switch.TextSize = 14
 
-        Tab.Name = "Tab"
-        Tab.Parent = Items
-        Tab.Active = true
-        Tab.BackgroundColor3 = Color3.new(1, 1, 1)
-        Tab.BackgroundTransparency = 1
-        Tab.BorderColor3 = Color3.new(0, 0, 0)
-        Tab.BorderSizePixel = 0
-        Tab.Size = UDim2.new(0, 300, 0, 235)
-        Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
+        Tab_Holder.Name = "Tab"
+        Tab_Holder.Parent = Items
+        Tab_Holder.Active = true
+        Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
+        Tab_Holder.BackgroundTransparency = 1
+        Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
+        Tab_Holder.BorderSizePixel = 0
+        Tab_Holder.Size = UDim2.new(0, 300, 0, 235)
+        Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
 
         Switch.MouseButton1Click:Connect(function()
             for i,v in next,Items:GetChildren() do
