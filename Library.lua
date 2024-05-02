@@ -14,7 +14,7 @@ local Theme = {
 
 local Library = {}
 
-function Library:Create(Title, Icon)
+function Library:Create(Title, Icon, Type)
     local Library_Main = Instance.new("ScreenGui")
     local Background = Instance.new("Frame")
     local Background_Corner = Instance.new("UICorner")
@@ -30,6 +30,7 @@ function Library:Create(Title, Icon)
     local Main_Holder = Instance.new("ScrollingFrame")
     local Script_Image = Instance.new("ImageLabel")
     local Script_Name = Instance.new("TextLabel")
+    local Items = Instance.new("ScrollingFrame")
 
     Library_Main.Parent = game:GetService("CoreGui")
     Library_Main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -54,7 +55,8 @@ function Library:Create(Title, Icon)
     Top_Bar.BackgroundColor3 = Theme.Main
     Top_Bar.Position = UDim2.new(0, 0, 0, 0)
     Top_Bar.Size = UDim2.new(0, 400, 0, 25)
-
+    Top_Bar.Draggable = true
+    
     Top_Bar_Blocker.Parent = Top_Bar
     Top_Bar_Blocker.BorderSizePixel = 0
     Top_Bar_Blocker.Name = "Top_Bar_Blocker"
@@ -146,6 +148,86 @@ function Library:Create(Title, Icon)
     Script_Name.Text = Title
     Script_Name.TextColor3 = Theme.TextDefault
     Script_Name.TextSize = 14
+
+    Items.Name = "Items"
+    Items.Parent = Main_Holder
+    Items.Active = true
+    Items.BackgroundColor3 = Color3.new(1, 1, 1)
+    Items.BackgroundTransparency = 1
+    Items.BorderColor3 = Color3.new(0, 0, 0)
+    Items.BorderSizePixel = 0
+    Items.Position = UDim2.new(0.25, 0, 0, 0)
+    Items.Size = UDim2.new(0, 300, 0, 235)
+    Items.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+    local InsideLibrary = {}
+
+    function InsideLibrary:Tab(Tab_Name)
+        local Tab_Holder = Instance.new("ScrollingFrame")
+        local UIGridLayout = Instance.new("UIGridLayout")
+        local Tab = Instance.new("Frame")
+        local Switch = Instance.new("TextButton")
+        local Main_Tab = Instance.new("ScrollingFrame")
+
+        Tab_Holder.Name = "Tab_Holder"
+        Tab_Holder.Parent = Side
+        Tab_Holder.Active = true
+        Tab_Holder.BackgroundColor3 = Color3.new(1, 1, 1)
+        Tab_Holder.BackgroundTransparency = 1
+        Tab_Holder.BorderColor3 = Color3.new(0, 0, 0)
+        Tab_Holder.BorderSizePixel = 0
+        Tab_Holder.Size = UDim2.new(0, 100, 0, 235)
+        Tab_Holder.ZIndex = 2
+        Tab_Holder.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+        UIGridLayout.Parent = Tab_Holder
+        UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+        UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout.CellSize = UDim2.new(0, 95, 0, 25)
+
+        Tab.Name = "Tab"
+        Tab.Parent = Tab_Holder
+        Tab.BackgroundColor3 = Color3.new(1, 1, 1)
+        Tab.BackgroundTransparency = 1
+        Tab.BorderColor3 = Color3.new(0, 0, 0)
+        Tab.BorderSizePixel = 0
+        Tab.Size = UDim2.new(0, 100, 0, 100)
+
+        Switch.Name = "Switch"
+        Switch.Parent = Tab
+        Switch.BackgroundColor3 = Color3.new(1, 1, 1)
+        Switch.BackgroundTransparency = 1
+        Switch.BorderColor3 = Color3.new(0, 0, 0)
+        Switch.BorderSizePixel = 0
+        Switch.Size = UDim2.new(1, 0, 1, 0)
+        Switch.Font = Enum.Font.Gotham
+        Switch.Text = Tab_Name
+        Switch.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+        Switch.TextSize = 14
+
+        Main_Tab.Name = Tab_Name
+        Main_Tab.Parent = Items
+        Main_Tab.Active = true
+        Main_Tab.BackgroundColor3 = Color3.new(1, 1, 1)
+        Main_Tab.BackgroundTransparency = 1
+        Main_Tab.BorderColor3 = Color3.new(0, 0, 0)
+        Main_Tab.BorderSizePixel = 0
+        Main_Tab.Size = UDim2.new(0, 300, 0, 235)
+        Main_Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+        Switch.MouseButton1Click:Connect(function()
+            for i,v in next,Items:GetChildren() do
+                v.Visible = false
+            end
+            for i,t in next, Tabs:GetChildren() do
+                if t.ClassName ~= "UIGridLayout" then
+                    t.TextColor3 = Color3.fromRGB(200, 200, 200)
+                end
+                Switch.TextColor3 = Theme.TextSelect
+            end
+            Main_Tab.Visible = true
+        end)
+    end
 end
 
 return Library
